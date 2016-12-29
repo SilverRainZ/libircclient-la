@@ -158,6 +158,14 @@ typedef struct
 	irc_event_callback_t	event_connect;
 
 	/*!
+	 * The "on_ping" event is triggered when the client receives a PING
+	 *message from server, you do not neet to return a PONG message.
+	 *
+	 * \param origin the server, who sent PING message.
+	 */
+	irc_event_callback_t	event_ping;
+
+	/*!
 	 * The "nick" event is triggered when the client receives a NICK message,
 	 * meaning that someone (including you) on a channel with the client has 
 	 * changed their nickname. 

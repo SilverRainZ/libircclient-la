@@ -622,6 +622,8 @@ static void libirc_process_incoming_data (irc_session_t * session, size_t proces
 	if ( command && !strncmp (command, "PING", buf_end - command) && params[0] )
 	{
 		irc_send_raw (session, "PONG %s", params[0]);
+		if ( session->callbacks.event_ping )
+			(*session->callbacks.event_ping) (session, command, params[0], params, paramindex);
 		return;
 	}
 
